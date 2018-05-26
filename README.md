@@ -1,52 +1,7 @@
-FIFA Ultimate Team Toolkit
+Credit to https://github.com/trydis/FIFA-Ultimate-Team-Toolkit
+
+FUT ToolKit (C#)
 ===============================
-
-[![NuGet package](https://img.shields.io/nuget/vpre/UltimateTeam.Toolkit.svg)](https://www.nuget.org/packages/UltimateTeam.Toolkit/) [![Build status](https://ci.appveyor.com/api/projects/status/4owj0a485hhx1j7c/branch/master?svg=true)](https://ci.appveyor.com/project/trydis/fifa-ultimate-team-toolkit/branch/master) [![Join the chat at https://gitter.im/trydis/FIFA-Ultimate-Team-Toolkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/trydis/FIFA-Ultimate-Team-Toolkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-## Supported platforms
-- .NET 4.5
-- Windows 8.x
-- Windows Phone 8.1
-- Xamarin.Android
-- Xamarin.iOS
-- Xamarin.Mac
-- ASP.NET Core 1.0
-
-## Sample usage
-
-[Initialization](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#initialization)  
-[Login](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#login)  
-[Player search](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#player-search)  
-[Place bid](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#place-bid)  
-[Trade status](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#trade-status)  
-[Item data](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#item-data)  
-[Player image](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#player-image)  
-[Club image](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#club-image)  
-[Nation image](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#nation-image)  
-[Credits](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#credits)  
-[List auction](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#list-auction)  
-[Get trade pile](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-trade-pile)  
-[Get watch list](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-watch-list)  
-[Get Consumables](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-consumables)  
-[Add auction to watch list](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#add-auction-to-watch-list)  
-[Get Purchased items](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-purchased-items)  
-[Development search](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#development-search)  
-[Training search](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#training-search)  
-[Send to trade pile](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#send-to-trade-pile)  
-[Send to club](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#send-to-club)    
-[Quick sell](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#quick-sell)  
-[Remove from watch list](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#remove-from-watch-list)  
-[Remove from trade pile](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#remove-from-trade-pile)  
-[Get pile sizes](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-pile-sizes)  
-[Relist Tradepile](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#relist-tradepile)  
-[Get players from club](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-players-from-club)  
-[Get squads from club](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-squads-from-club)  
-[Get squad details](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-squad-details)  
-[Get definitions](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-definitions)    
-[Get daily gift](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#get-daily-gift)  
-[Remove sold items from trade pile](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#remove-sold-items-from-trade-pile)  
-[Open a pack](https://github.com/trydis/FIFA-Ultimate-Team-Toolkit#open-a-pack)  
-
 ### Initialization
 
 ```csharp
@@ -59,25 +14,6 @@ var client = new FutClient();
 var loginDetails = new LoginDetails("e-mail", "password", "secret answer", Platform.Ps4 /* or any of the other platforms */, AppVersion.WebApp /* or AppVersion.CompanionApp */);
 ITwoFactorCodeProvider provider = // initialize an implementation of this interface
 var loginResponse = await client.LoginAsync(loginDetails, provider);
-```
-
-Example implementation of ITwoFactorCodeProvider interface
-```csharp
-
-    ...
-	ITwoFactorCodeProvider provider = new FutAuth();
-    ...
-	
-    public class FutAuth : ITwoFactorCodeProvider
-    {
-        public TaskCompletionSource<string> taskResult = new TaskCompletionSource<string>();
-        public Task<string> GetTwoFactorCodeAsync(AuthenticationType authType)
-        {
-            Console.WriteLine($"{ DateTime.Now } Enter OTP ({ authType }):");
-            taskResult.SetResult(Console.ReadLine());
-            return taskResult.Task;
-        }
-    }
 ```
 
 ### Player search
