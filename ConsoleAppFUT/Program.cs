@@ -35,7 +35,8 @@ namespace ConsoleAppFUT
             {
                 Console.WriteLine($"{squad.SquadName}");
 
-                //squad.Id nella ricerca, non corrisponde a quello della lista
+                //squad.Id nella ricerca, non corrisponde a quello della 
+                //TEST
                 //var squadDetailsResponse = client.GetSquadDetailsAsync(squad.Id).GetAwaiter().GetResult();
                 //foreach (var squadPlayer in squadDetailsResponse.Players)
                 //{
